@@ -80,10 +80,7 @@ export default {
           document.getElementById(tileID).style.transform = "translateX(calc(100% + .5em))";
           break
       }
-      setTimeout(()=>{
-        document.getElementById(tileID).style.transform = "";
-      },175);
-      
+
       return
     },
 
@@ -94,6 +91,8 @@ export default {
 
     buildUpdatedClickedTile: function(clickedTile) {
       const clickedTileJSON = this.tiles[clickedTile];
+
+      document.getElementById(clickedTileJSON.id).style.transform = "";
       
       return {
         value:clickedTileJSON.value,
@@ -210,7 +209,7 @@ body {
   cursor:pointer;
 }
 .tile.legal:hover {
-  opacity:.7;
+  opacity:.95;
 }
 
 .tile span {
