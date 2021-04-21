@@ -12,13 +12,13 @@
         :id="tile.id"
         :key="tile.id"
         :class="[
-          {legal : legalMoves[emptyTilePosition].includes(tile.position+1)},
-          {red: tile.id <= 4 && colors},
-          {yellow: tile.id > 4 && tile.id <= 8 && colors},
-          {blue: tile.id > 8 && tile.id <= 12 && colors},
-          {green: tile.id > 12 && colors},
+            {legal : legalMoves[emptyTilePosition].includes(tile.position+1)},
+            {red: tile.id <= 4 && colors},
+            {yellow: tile.id > 4 && tile.id <= 8 && colors},
+            {blue: tile.id > 8 && tile.id <= 12 && colors},
+            {green: tile.id > 12 && colors}
         ]"
-        @click="checkLegalMove(tile.position)"
+        @click="checkLegalMove(tile.position, tile.id)"
       >
         <span>{{tile.value}}</span>
       </div>
@@ -51,11 +51,40 @@ export default {
 
 
   methods: {
-    checkLegalMove: function(clickedTile) {
+    checkLegalMove: function(clickedTile, tileID) {
       if(this.legalMoves[this.emptyTilePosition].includes(clickedTile+1)){
-        this.updateTiles(clickedTile)
-        this.emptyTilePosition = clickedTile;
+        
+        this.translateTile(clickedTile, tileID);
+        
+        setTimeout(()=>{
+          // Remove transition styles
+          this.updateTiles(clickedTile)
+          this.emptyTilePosition = clickedTile;
+        },175);
       }
+      return
+    },
+
+    translateTile: function(clickedTile, tileID) {
+      switch (this.emptyTilePosition - clickedTile) {
+        case 4: // up
+          document.getElementById(tileID).style.transform = "translateY(calc(100% + .5em))";
+          break
+        case -4: // down
+          document.getElementById(tileID).style.transform = "translateY(calc(-100% - .5em))";
+          break
+        case -1: // left
+          document.getElementById(tileID).style.transform = "translateX(calc(-100% - .5em))";
+          break
+        case 1: // right
+          document.getElementById(tileID).style.transform = "translateX(calc(100% + .5em))";
+          break
+      }
+      setTimeout(()=>{
+        document.getElementById(tileID).style.transform = "";
+      },175);
+      
+      return
     },
 
     updateTiles: function(clickedTile) {
@@ -65,6 +94,7 @@ export default {
 
     buildUpdatedClickedTile: function(clickedTile) {
       const clickedTileJSON = this.tiles[clickedTile];
+      
       return {
         value:clickedTileJSON.value,
         position:this.emptyTilePosition,
@@ -92,7 +122,8 @@ export default {
     findRandomMove: function() {
       const moves = this.legalMoves[this.emptyTilePosition];
       const randomIndex = Math.floor((Math.random() * moves.length));
-      this.checkLegalMove(moves[randomIndex] - 1)
+      this.updateTiles(moves[randomIndex] - 1)
+      this.emptyTilePosition = moves[randomIndex] - 1;
     },
 
     buildList: function() {
@@ -147,7 +178,7 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap:.5em;
-  padding: 1em;
+  padding: .5em;
   box-shadow: 0px 6px 10px -5px rgba(0,0,0,0.1);
   border-radius: .3em;
   overflow: hidden;
@@ -157,9 +188,9 @@ body {
     position: relative;
     padding-bottom: 100%;
     border-radius:.3em;
-    order:var(--tileOrder);
     transition:175ms;
     background:white;
+    user-select:none;
 }
 .red {
   background: #b76e6e;
