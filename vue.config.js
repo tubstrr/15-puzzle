@@ -5,7 +5,8 @@ module.exports = {
         short_name: "15 Puzzle",
         icons: [
             {
-                "src": "icons/windows10/SmallTile.scale-100.png",
+                "src": "img/icons/windows10/SmallTile.scale-100.png",
+                // "src": "icons/windows10/SmallTile.scale-100.png",
                 "sizes": "71x71"
             },
             {
