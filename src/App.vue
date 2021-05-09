@@ -145,10 +145,12 @@ export default {
           break
       }
 
-      
-      this.endTime = new Date()
       this.totalMoves++
-      this.checkIfSolved()
+
+      if(this.totalMoves > 15) {
+        this.endTime = new Date()
+        this.checkIfSolved()
+      }
       
       return
     },
