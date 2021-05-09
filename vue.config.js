@@ -8,7 +8,7 @@ module.exports = {
         appleMobileWebAppStatusBarStyle: 'black',
 
         // configure the workbox plugin
-        workboxPluginMode: 'GenerateSw',
+        workboxPluginMode: 'GenerateSW',
         // workboxOptions: {
         //     // swSrc is required in InjectManifest mode.
         //     swSrc: 'dev/sw.js',
