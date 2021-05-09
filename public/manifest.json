@@ -509,7 +509,7 @@
         }
     ],
     "start_url": "/index.html",
-    "display": "fullscreen",
+    "display": "standalone",
     "background_color": "#0f3433",
     "url": "https://15-puzzle.jonknoll.dev/",
     "manifestUrl": "https://15-puzzle.jonknoll.dev/manifest.json",
