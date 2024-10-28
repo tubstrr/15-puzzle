@@ -1,29 +1,75 @@
-![Vue.js Logo](https://github.com/vercel/vercel/blob/master/packages/frameworks/logos/vue.svg)
+# Nuxt Minimal Starter
 
-# Vue.js Example
+Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-This directory is a brief example of a [Vue.js](https://vuejs.org/) app that can be deployed with Vercel and zero configuration.
+## Setup
 
-## Deploy Your Own
+Make sure to install dependencies:
 
-Deploy your own Vue.js project with Vercel.
+```bash
+# npm
+npm install
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/vercel/vercel/tree/main/examples/vue)
+# pnpm
+pnpm install
 
-_Live Example: https://vue.now-examples.now.sh_
+# yarn
+yarn install
 
-### How We Created This Example
-
-To get started with Vue.js deployed with Vercel, you can use the [Vue CLI](https://cli.vuejs.org/guide/creating-a-project.html#vue-create) to initialize the project:
-
-```shell
-$ vue create
+# bun
+bun install
 ```
 
-### Deploying From Your Terminal
+## Development Server
 
-You can deploy your new Vue.js project with a single command from your terminal using [Vercel CLI](https://vercel.com/download):
+Start the development server on `http://localhost:3000`:
 
-```shell
-$ vercel
+```bash
+# npm
+npm run dev
+
+# pnpm
+pnpm dev
+
+# yarn
+yarn dev
+
+# bun
+bun run dev
 ```
+
+## Production
+
+Build the application for production:
+
+```bash
+# npm
+npm run build
+
+# pnpm
+pnpm build
+
+# yarn
+yarn build
+
+# bun
+bun run build
+```
+
+Locally preview production build:
+
+```bash
+# npm
+npm run preview
+
+# pnpm
+pnpm preview
+
+# yarn
+yarn preview
+
+# bun
+bun run preview
+```
+
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

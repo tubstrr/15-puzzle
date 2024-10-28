@@ -1,5 +1,0 @@
-[{
-  "relation": ["delegate_permission/common.handle_all_urls"],
-  "target" : { "namespace": "android_app", "package_name": "dev.jonknoll.app_15_puzzle.twa",
-               "sha256_cert_fingerprints": ["25:14:62:4A:9A:8A:D4:8D:75:9C:83:69:71:B6:BF:D9:A2:51:EE:73:2A:B9:80:0E:6E:6D:51:04:6D:76:97:23"] }
-}]
