@@ -344,6 +344,8 @@ const handleGesture = () => {
 };
 
 const handleSwipe = (event, method) => {
+  e.preventDefault();
+
   switch (method) {
     case "start":
       touch.value.start.x = event.changedTouches[0].clientX;
