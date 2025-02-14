@@ -344,7 +344,7 @@ const handleGesture = () => {
 };
 
 const handleSwipe = (event, method) => {
-  e.preventDefault();
+  event.preventDefault();
 
   switch (method) {
     case "start":
