@@ -344,8 +344,6 @@ const handleGesture = () => {
 };
 
 const handleSwipe = (event, method) => {
-  event.preventDefault();
-
   switch (method) {
     case "start":
       touch.value.start.x = event.changedTouches[0].clientX;
@@ -471,8 +469,9 @@ onUnmounted(() => {
   font-family: "Ubuntu", sans-serif;
 }
 
-body {
+body, html {
   margin: 0;
+  overscroll-behavior: none;
 }
 
 #app {
@@ -483,6 +482,8 @@ body {
   align-items: center;
   justify-content: center;
   position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .board {
