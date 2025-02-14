@@ -1,29 +1,29 @@
 {
-	"name": "nuxthub-starter",
-	"private": true,
-	"type": "module",
-	"scripts": {
-		"dev": "nuxt dev",
-		"build": "nuxt build",
-		"preview": "npx nuxthub preview",
-		"deploy": "npx nuxthub deploy",
-		"postinstall": "nuxt prepare",
-		"lint": "eslint .",
-		"typecheck": "nuxt typecheck",
-		"generate-pwa-assets": "pwa-assets-generator --preset minimal-2023 public/logo.svg"
-	},
-	"dependencies": {
-		"@nuxt/eslint": "^0.7.5",
-		"@nuxthub/core": "^0.8.12",
-		"@vite-pwa/nuxt": "0.10.6",
-		"nuxt": "^3.15.2"
-	},
-	"devDependencies": {
-		"@nuxt/eslint-config": "^0.7.5",
-		"@vite-pwa/assets-generator": "^0.2.6",
-		"eslint": "^9.18.0",
-		"vue-tsc": "^2.2.0",
-		"wrangler": "3.103.2"
-	},
-	"packageManager": "pnpm@9.15.4"
+  "name": "nuxthub-starter",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "preview": "npx nuxthub preview",
+    "deploy": "npx nuxthub deploy",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "typecheck": "nuxt typecheck",
+    "generate-pwa-assets": "pwa-assets-generator --preset minimal-2023 public/logo.svg"
+  },
+  "dependencies": {
+    "@nuxt/eslint": "^0.7.5",
+    "@nuxthub/core": "^0.8.12",
+    "@vite-pwa/nuxt": "0.10.6",
+    "nuxt": "^3.15.2"
+  },
+  "devDependencies": {
+    "@nuxt/eslint-config": "^0.7.5",
+    "@vite-pwa/assets-generator": "^0.2.6",
+    "eslint": "^9.18.0",
+    "vue-tsc": "^2.2.0",
+    "wrangler": "3.103.2"
+  },
+  "packageManager": "pnpm@9.15.4"
 }

@@ -399,60 +399,64 @@ onUnmounted(() => {
 
 <template>
   <div id="app">
-    <button
-      class="hamburger hamburger--squeeze"
-      :class='{ "is-active": ham }'
-      type="button"
-      @click="ham = !ham"
-    >
-      <span class="hamburger-box">
-        <span class="hamburger-inner"></span>
-      </span>
-    </button>
-    <div class="solve-inside" :class="{ showing: solved }">
-      <span>You solved it!</span>
-      <div class="stats">
-        <p>
-          Time <br />
-          <span>{{ time }}</span>
-        </p>
-        <p>
-          Moves <br />
-          <span>{{ totalMoves }}</span>
-        </p>
-      </div>
-      <div class="solvedBTNS">
-        <button class="scrmble" @click="scramble">Scramble</button>
-        <button
-          class="scrmble"
-          style="margin-left: 1em"
-          @click="(solved = !solved), (totalMoves = 0)"
-        >
-          Close Window
-        </button>
-      </div>
-    </div>
-    <transition-group tag="ul" class="board">
-      <li
-        class="tile"
-        v-for="tile in tiles"
-        :id="tile.id"
-        :key="tile.id"
-        :class="
-          [
-            { legal: defineLegalClasses(tile.position) },
-            { red: findRow(tile.id - 1) === 0 && colors },
-            { yellow: findRow(tile.id - 1) === 1 && colors },
-            { blue: findRow(tile.id - 1) === 2 && colors },
-            { green: findRow(tile.id - 1) === 3 && colors },
-          ]
-        "
-        enter-active-class="opacity"
-        @click="checkLegalMove(tile.position)"
+    <!-- <NuxtPwaManifest /> -->
+    <VitePwaManifest />
+    <main>
+      <button
+        class="hamburger hamburger--squeeze"
+        :class='{ "is-active": ham }'
+        type="button"
+        @click="ham = !ham"
       >
-        <span>{{ tile.value }}</span>
-      </li>
-    </transition-group>
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </button>
+      <div class="solve-inside" :class="{ showing: solved }">
+        <span>You solved it!</span>
+        <div class="stats">
+          <p>
+            Time <br />
+            <span>{{ time }}</span>
+          </p>
+          <p>
+            Moves <br />
+            <span>{{ totalMoves }}</span>
+          </p>
+        </div>
+        <div class="solvedBTNS">
+          <button class="scrmble" @click="scramble">Scramble</button>
+          <button
+            class="scrmble"
+            style="margin-left: 1em"
+            @click="(solved = !solved), (totalMoves = 0)"
+          >
+            Close Window
+          </button>
+        </div>
+      </div>
+      <transition-group tag="ul" class="board">
+        <li
+          class="tile"
+          v-for="tile in tiles"
+          :id="tile.id"
+          :key="tile.id"
+          :class="
+            [
+              { legal: defineLegalClasses(tile.position) },
+              { red: findRow(tile.id - 1) === 0 && colors },
+              { yellow: findRow(tile.id - 1) === 1 && colors },
+              { blue: findRow(tile.id - 1) === 2 && colors },
+              { green: findRow(tile.id - 1) === 3 && colors },
+            ]
+          "
+          enter-active-class="opacity"
+          @click="checkLegalMove(tile.position)"
+        >
+          <span>{{ tile.value }}</span>
+        </li>
+      </transition-group>
+    </main>
     <div class="buttons" :class="{ showing: ham }">
       <button class="scrmble" @click="scramble">Scramble</button>
       <button class="solve" @click="buildList">Solve</button>
