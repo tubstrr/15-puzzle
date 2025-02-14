@@ -1,4 +1,4 @@
-const sw = false;
+const sw = true;
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -28,7 +28,7 @@ export default defineNuxtConfig({
   pwa: {
     strategies: sw ? "injectManifest" : "generateSW",
     srcDir: sw ? "service-worker" : undefined,
-    filename: sw ? "sw.ts" : undefined,
+    filename: sw ? "sw.js" : undefined,
     registerType: "autoUpdate",
     manifest: {
       name: "15 Puzzle",
