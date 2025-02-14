@@ -26,13 +26,13 @@ export default defineNuxtConfig({
 
   // PWA
   pwa: {
-    strategies: sw ? "injectManifest" : "generateSW",
-    srcDir: sw ? "service-worker" : undefined,
-    filename: sw ? "sw.js" : undefined,
+    strategies: "generateSW",
+    srcDir: undefined,
+    filename: undefined,
     registerType: "autoUpdate",
     manifest: {
       name: "15 Puzzle",
-      short_name: "15P",
+      short_name: "15 Puzzle",
       theme_color: "#004643",
       icons: [
         {
