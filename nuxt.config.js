@@ -44,10 +44,15 @@ export default defineNuxtConfig({
     filename: undefined,
     registerType: "autoUpdate",
     manifest: {
+      id: "tubstrr/15-puzzle",
       name: "15 Puzzle",
       short_name: "15 Puzzle",
       description: "A simple 15 puzzle game",
       theme_color: "#004643",
+      launch_handler: {
+        client_mode: "navigate-existing",
+      },
+      orientation: "portrait",
       icons: [
         {
           src: "pwa-192x192.png",
@@ -60,10 +65,39 @@ export default defineNuxtConfig({
           type: "image/png",
         },
         {
-          src: "pwa-512x512.png",
+          src: "maskable-icon-512x512",
           sizes: "512x512",
           type: "image/png",
-          purpose: "any maskable",
+          purpose: "maskable",
+        },
+      ],
+      categories: ["games"],
+      dir: "ltr",
+      prefer_related_applications: false,
+      screenshots: [
+        {
+          src: "screenshot_1.png",
+          sizes: "746/1338",
+          type: "image/jpg",
+          platform: "any",
+        },
+        {
+          src: "screenshot_2.png",
+          sizes: "746/1338",
+          type: "image/jpg",
+          platform: "any",
+        },
+        {
+          src: "screenshot_3.png",
+          sizes: "746/1338",
+          type: "image/jpg",
+          platform: "any",
+        },
+        {
+          src: "screenshot_4.png",
+          sizes: "746/1338",
+          type: "image/jpg",
+          platform: "any",
         },
       ],
     },
