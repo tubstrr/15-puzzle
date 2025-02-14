@@ -17,7 +17,7 @@ export default defineNuxtConfig({
   },
   nitro: {
     prerender: {
-      routes: ["/", "/?app=true"],
+      routes: ["/", "/app"],
     },
     experimental: {
       // Enable Server API documentation within NuxtHub
@@ -27,6 +27,12 @@ export default defineNuxtConfig({
 
   routeRules: {
     "/": {
+      cache: {
+        maxAge: 60,
+        staleWhileRevalidate: 60,
+      },
+    },
+    "/app": {
       cache: {
         maxAge: 60,
         staleWhileRevalidate: 60,
