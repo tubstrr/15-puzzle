@@ -16,11 +16,24 @@ export default defineNuxtConfig({
     cache: true,
   },
   nitro: {
+    prerender: {
+      routes: ["/"],
+    },
     experimental: {
       // Enable Server API documentation within NuxtHub
       openAPI: true,
     },
   },
+
+  routeRules: {
+    "/": {
+      cache: {
+        maxAge: 60,
+        staleWhileRevalidate: 60,
+      },
+    },
+  },
+
   // Development
   devtools: { enabled: true },
 
@@ -33,6 +46,7 @@ export default defineNuxtConfig({
     manifest: {
       name: "15 Puzzle",
       short_name: "15 Puzzle",
+      description: "A simple 15 puzzle game",
       theme_color: "#004643",
       icons: [
         {
@@ -54,10 +68,9 @@ export default defineNuxtConfig({
       ],
     },
     workbox: {
-      globPatterns: ["**/*.{js,css,html,png,svg,ico}"],
-    },
-    injectManifest: {
-      globPatterns: ["**/*.{js,css,html,png,svg,ico}"],
+      globPatterns: ["**/*.{js,css,html,svg,png,ico}"],
+      cleanupOutdatedCaches: true,
+      clientsClaim: true,
     },
     client: {
       installPrompt: true,
