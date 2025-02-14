@@ -17,6 +17,8 @@ const touch = ref({
   end: { x: 0, y: 0 },
 });
 
+const route = useRoute();
+
 // Constants
 const rows = [
   [0, 1, 2, 3],
@@ -283,14 +285,6 @@ const handleGesture = () => {
     orthogonalDirection,
   );
 
-  console.log("🍤 ~ handleGesture ~ swipeDirection:", swipeDirection);
-
-  console.log(
-    "🍤 ~ handleGesture ~ emptyTilePosition:",
-    emptyTilePosition.value,
-  );
-  console.log("🍤 ~ handleGesture ~ emptyTileRow:", emptyTileRow.value);
-
   const columnModulus = emptyTilePosition.value % 4;
   let invertedColumnModulus = 0;
   switch (columnModulus) {
@@ -309,7 +303,6 @@ const handleGesture = () => {
   }
 
   const rowModulus = findRow(emptyTilePosition.value) % 4;
-  console.log("🍤 ~ handleGesture ~ rowModulus:", rowModulus);
   let invertedRowModulus = 0;
   switch (rowModulus) {
     case 0:
@@ -365,7 +358,6 @@ const time = computed(() => {
 
   const minutes = Math.floor(timeInMili / miliToMinutes);
   const seconds = (timeInMili % miliToMinutes) / miliToSeconds;
-  console.log("🍤 ~ time ~ seconds:", seconds);
 
   return `${minutes}:${
     seconds.toLocaleString("en-US", {
@@ -398,7 +390,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div id="app">
+  <div id="app" :class='`${route.query.app ? "app-view" : ""}`'>
     <!-- <NuxtPwaManifest /> -->
     <VitePwaManifest />
     <main>
@@ -488,6 +480,10 @@ body, html {
   position: fixed;
   top: 0;
   left: 0;
+}
+
+#app.app-view .hamburger {
+  top: 2rem;
 }
 
 .board {

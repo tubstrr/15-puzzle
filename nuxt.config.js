@@ -17,7 +17,7 @@ export default defineNuxtConfig({
   },
   nitro: {
     prerender: {
-      routes: ["/"],
+      routes: ["/", "/?app=true"],
     },
     experimental: {
       // Enable Server API documentation within NuxtHub
@@ -69,6 +69,12 @@ export default defineNuxtConfig({
           sizes: "512x512",
           type: "image/png",
           purpose: "maskable",
+        },
+        {
+          src: "pwa-512x512",
+          sizes: "512x512",
+          type: "image/png",
+          purpose: "any",
         },
       ],
       categories: ["games"],
