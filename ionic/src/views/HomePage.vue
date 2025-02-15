@@ -1,6 +1,6 @@
 <template>
   <ion-page>
-    <iframe src="https://15-puzzle.jonknoll.dev/app"></iframe>
+    <iframe src="https://15-puzzle.jonknoll.dev/app-page"></iframe>
   </ion-page>
 </template>
 

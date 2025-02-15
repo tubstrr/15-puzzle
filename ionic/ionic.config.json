@@ -1,7 +1,9 @@
 {
-  "name": "ionic",
+  "name": "15-puzzle",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {
+      "appName": "15-puzzle"
+    }
   },
   "type": "vue-vite"
 }
