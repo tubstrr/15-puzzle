@@ -3,9 +3,9 @@
     <header>
       <div class="container">
         <h1>15 Puzzle <span>(By Jon Knoll)</span></h1>
-        <NuxtLink to="/play" class="button" style="--background: #6e81b7">
+        <a href="/play" class="button" style="--background: #6e81b7">
           Play
-        </NuxtLink>
+        </a>
       </div>
     </header>
     <main>
@@ -159,6 +159,7 @@ header > .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: auto;
 }
 
 h1 {
@@ -269,6 +270,9 @@ main > .container > .left .cta ul > li > a {
   width: 20ch;
   transition: 200ms;
 }
+main > .container > .left .cta ul > li > a img {
+  width: 100%;
+}
 main > .container > .left .cta ul > li > a:hover {
   opacity: 0.8;
   transform: scale(1.05);
@@ -316,6 +320,7 @@ main > .container .right > video {
     flex-direction: column;
     align-items: flex-start;
     position: relative;
+    margin: auto;
   }
 
   .container {

@@ -2,6 +2,9 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-07-30",
   future: { compatibilityVersion: 4 },
   modules: ["@nuxthub/core", "@nuxt/eslint", "@vite-pwa/nuxt"],
+  experimental: {
+    appManifest: false,
+  },
   hub: {
     database: false,
     kv: false,
@@ -18,24 +21,9 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    "/": {
-      cache: {
-        maxAge: 60,
-        staleWhileRevalidate: 60,
-      },
-    },
-    "/app-page": {
-      cache: {
-        maxAge: 60,
-        staleWhileRevalidate: 60,
-      },
-    },
-    "/play": {
-      cache: {
-        maxAge: 60,
-        staleWhileRevalidate: 60,
-      },
-    },
+    "/": { prerender: true },
+    "/app-page": { prerender: true },
+    "/play": { prerender: true },
   },
 
   // Development
