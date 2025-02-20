@@ -123,7 +123,7 @@ body, html {
 .hamburger {
   position: fixed;
   z-index: 3;
-  top: 0;
+  top: calc(env(safe-area-inset-top) + 1rem);
   right: 0;
 }
 .hamburger,

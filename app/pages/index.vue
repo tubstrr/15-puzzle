@@ -1,3 +1,13 @@
+<script setup>
+useSeoMeta({
+  title: "15 Puzzle (By Jon Knoll)",
+  description: "A 15 puzzle game",
+  image: "/phone.webp",
+  url: "https://15-puzzle.jonknoll.dev",
+});
+</script>
+
+
 <template>
   <div id="landing-page">
     <header>
