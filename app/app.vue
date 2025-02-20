@@ -10,6 +10,7 @@
 body, html {
   margin: 0;
   overscroll-behavior: none;
+  background: #004643;
 }
 
 #app {

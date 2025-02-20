@@ -1,14 +1,7 @@
 export default defineNuxtConfig({
   compatibilityDate: "2024-07-30",
   future: { compatibilityVersion: 4 },
-  modules: [
-    "@nuxthub/core",
-    "@nuxt/eslint",
-    "@vite-pwa/nuxt",
-    "@nuxtjs/tailwindcss",
-    "shadcn-nuxt",
-    "@nuxtjs/color-mode",
-  ],
+  modules: ["@nuxthub/core", "@nuxt/eslint", "@vite-pwa/nuxt"],
   hub: {
     database: false,
     kv: true,
@@ -37,7 +30,7 @@ export default defineNuxtConfig({
         staleWhileRevalidate: 60,
       },
     },
-    "/marketing": {
+    "/play": {
       cache: {
         maxAge: 60,
         staleWhileRevalidate: 60,
@@ -125,7 +118,8 @@ export default defineNuxtConfig({
     },
     client: {
       installPrompt: true,
-      periodicSyncForUpdates: 3600,
+      // periodicSyncForUpdates: 3600,
+      periodicSyncForUpdates: 1,
     },
     devOptions: {
       enabled: true,
