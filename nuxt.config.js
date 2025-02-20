@@ -30,7 +30,7 @@ export default defineNuxtConfig({
 	},
 	nitro: {
 		prerender: {
-			routes: ["/", "/play", "/app-page"],
+			routes: ["/", "/play", "/contact", "/privacy-policy"],
 		},
 		experimental: {
 			openAPI: true,
