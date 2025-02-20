@@ -1,7 +1,12 @@
 export default defineNuxtConfig({
   compatibilityDate: "2024-07-30",
   future: { compatibilityVersion: 4 },
-  modules: ["@nuxthub/core", "@nuxt/eslint", "@vite-pwa/nuxt"],
+  modules: [
+    "@nuxthub/core",
+    "@nuxt/eslint",
+    "@vite-pwa/nuxt",
+    "@nuxt/fonts",
+  ],
   experimental: {
     appManifest: false,
   },
@@ -117,4 +122,13 @@ export default defineNuxtConfig({
       type: "module",
     },
   },
+
+  // Fonts
+   fonts: {
+    google: [
+      {
+        family: "Ubuntu",
+        variants: ["400", "700", "900"],
+      },
+    ],
 });
