@@ -4,13 +4,13 @@ export default defineNuxtConfig({
   modules: ["@nuxthub/core", "@nuxt/eslint", "@vite-pwa/nuxt"],
   hub: {
     database: false,
-    kv: true,
+    kv: false,
     blob: false,
     cache: true,
   },
   nitro: {
     prerender: {
-      routes: ["/", "/app-page"],
+      routes: ["/", "/play", "/app-page"],
     },
     experimental: {
       openAPI: true,
