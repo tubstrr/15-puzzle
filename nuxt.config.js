@@ -39,8 +39,9 @@ export default defineNuxtConfig({
 
 	routeRules: {
 		"/": { prerender: true },
-		"/app-page": { prerender: true },
 		"/play": { prerender: true },
+		"/contact": { prerender: true },
+		"/privacy-policy": { prerender: true },
 	},
 
 	// Development
