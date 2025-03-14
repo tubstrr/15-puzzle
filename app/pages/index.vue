@@ -92,7 +92,7 @@ useSeoMeta({
             <ul class="download">
               <li>
                 <a
-                  href="https://www.apple.com/app-store/"
+                  href="https://apps.apple.com/us/app/15-puzzle-by-jon-knoll/id6742034631"
                   target="_blank"
                   title="Download on the App Store"
                 >
@@ -101,7 +101,7 @@ useSeoMeta({
               </li>
               <li>
                 <a
-                  href="https://play.google.com/store/games?hl=en_US"
+                  href="https://play.google.com/store/apps/details?id=tubstrr.jonknoll.fifteenpuzzle"
                   target="_blank"
                   title="Download on the Google Play Store"
                 >
