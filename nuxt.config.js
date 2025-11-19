@@ -1,7 +1,7 @@
 export default defineNuxtConfig({
 	compatibilityDate: "2024-07-30",
 	future: { compatibilityVersion: 4 },
-	modules: ["@nuxthub/core", "@nuxt/eslint", "@vite-pwa/nuxt", "@nuxt/fonts"],
+	modules: ["@nuxt/eslint", "@vite-pwa/nuxt", "@nuxt/fonts"],
 	app: {
 		head: {
 			title: "15 Puzzle (By Jon Knoll)",
@@ -21,12 +21,6 @@ export default defineNuxtConfig({
 	},
 	experimental: {
 		appManifest: false,
-	},
-	hub: {
-		database: false,
-		kv: false,
-		blob: false,
-		cache: true,
 	},
 	nitro: {
 		prerender: {
