@@ -11,7 +11,7 @@
  <div id="landing-page">
   <header>
    <div class="container">
-    <h1>15 Puzzle <span>(By Jon Knoll.)</span></h1>
+    <h1>15 Puzzle <span>(By Jon Knoll)</span></h1>
     <a href="/play" class="button" style="--background: #6e81b7"> Play </a>
    </div>
   </header>
