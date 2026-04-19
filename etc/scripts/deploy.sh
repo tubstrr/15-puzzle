@@ -29,4 +29,4 @@ log() {
     15-puzzle:latest
 
   log "=== Deploy complete ==="
-} 2>&1 | tee -a "$LOG_FILE" 
+} 2>&1 | tee -a "$LOG_FILE"
