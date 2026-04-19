@@ -16,9 +16,17 @@ log() {
   log "Pulling latest code..."
   git pull origin main
 
-  log "Building and restarting container..."
-  docker compose -f etc/configs/production/docker-compose.yml build
-  docker compose -f etc/configs/production/docker-compose.yml up -d --force-recreate
+  log "Building image..."
+  sudo DOCKER_CONFIG=/tmp docker buildx build -t 15-puzzle:latest -f etc/configs/production/Dockerfile --load src/nuxt
+
+  log "Restarting container..."
+  sudo docker stop 15-puzzle 2>/dev/null || true
+  sudo docker rm 15-puzzle 2>/dev/null || true
+  sudo docker run -d \
+    --name 15-puzzle \
+    --restart unless-stopped \
+    -p 9501:3000 \
+    15-puzzle:latest
 
   log "=== Deploy complete ==="
 } 2>&1 | tee -a "$LOG_FILE"
