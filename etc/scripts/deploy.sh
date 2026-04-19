@@ -14,7 +14,8 @@ log() {
   cd "$APP_DIR"
 
   log "Pulling latest code..."
-  git pull origin main
+  git fetch origin main
+  git reset --hard origin/main
 
   log "Building image..."
   sudo DOCKER_CONFIG=/tmp docker buildx build -t 15-puzzle:latest -f etc/configs/production/Dockerfile --load src/nuxt
