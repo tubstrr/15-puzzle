@@ -1,0 +1,32 @@
+services:
+  15-puzzle-dev:
+    build:
+      context: ../../../src/nuxt
+      dockerfile: ../../etc/configs/development/Dockerfile.dev
+    image: 15-puzzle:dev
+    container_name: 15-puzzle-dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../../../src/nuxt:/app
+      - nuxt_node_modules:/app/node_modules
+    environment:
+      - NODE_ENV=development
+
+  ionic-dev:
+    build:
+      context: ../../../src/ionic
+      dockerfile: ../../etc/configs/development/Dockerfile.ionic-dev
+    image: ionic-15-puzzle:dev
+    container_name: ionic-15-puzzle-dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - ../../../src/ionic:/app
+      - ionic_node_modules:/app/node_modules
+    environment:
+      - NODE_ENV=development
+
+volumes:
+  nuxt_node_modules:
+  ionic_node_modules:

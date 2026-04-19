@@ -1,7 +1,0 @@
-{
-  "name": "nuxthub-starter",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "custom"
-}

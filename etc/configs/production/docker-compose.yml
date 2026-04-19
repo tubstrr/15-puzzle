@@ -1,0 +1,10 @@
+services:
+  15-puzzle:
+    build:
+      context: ../../../src/nuxt
+      dockerfile: ../../etc/configs/production/Dockerfile
+    image: 15-puzzle:latest
+    container_name: 15-puzzle
+    restart: unless-stopped
+    ports:
+      - "3000:3000"

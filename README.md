@@ -1,60 +1,58 @@
-# NuxtHub Starter Template
+# 15 Puzzle
 
-This starter lets you get started with [NuxtHub](https://hub.nuxt.com) in
-seconds.
+A classic sliding puzzle game built as a Progressive Web App (PWA) — installable on any device, playable offline.
 
-- [Documentation](https://hub.nuxt.com)
+Built by [Jon Knoll](https://github.com/tubstrr).
 
-## Features
+---
 
-- Image upload with [`hubBlob()`](http://hub.nuxt.com/docs/storage/blob)
-- Save chat messages with
-  [`hubDatabase()`](http://hub.nuxt.com/docs/storage/database)
-- Save server redirects with [`hubKV()`](http://hub.nuxt.com/docs/storage/kv)
-- Cache an API response with
-  [`cachedEventHandler()`](https://hub.nuxt.com/docs/server/cache)
-- Generate the API documentation with Scalar within the
-  [NuxtHub Admin](https://admin.hub.nuxt.com)
+## Repo Structure
 
-## Setup
-
-Make sure to install the dependencies with [pnpm](https://pnpm.io).
-
-```bash
-pnpm install
+```
+15-puzzle/
+├── src/
+│   ├── nuxt/       ← Nuxt 3 PWA (the web app)
+│   └── ionic/      ← Ionic/Capacitor (the mobile app)
+├── etc/
+│   ├── configs/
+│   │   ├── development/    ← Docker dev containers (hot reload)
+│   │   └── production/     ← Docker production image
+│   └── devops.md           ← Full deployment guide
+├── Makefile        ← All build, run, and deploy commands
+└── README.md
 ```
 
-## Development Server
+---
 
-Start the development server on `http://localhost:3000`:
-
-```bash
-pnpm dev
-```
-
-## Production
-
-Build the application for production:
+## Quick Start
 
 ```bash
-pnpm build
+make install    # Install Nuxt dependencies
+make dev        # Start dev server → http://localhost:3000
 ```
 
-Check out the
-[deployment documentation](https://hub.nuxt.com/docs/getting-started/deploy) for
-more information.
+---
 
-## Deploy
+## All Commands
 
-Deploy the application on the Edge with [NuxtHub](https://hub.nuxt.com) on your
-Cloudflare account:
+| Command | Description |
+|---|---|
+| `make install` | Install Nuxt dependencies |
+| `make dev` | Nuxt dev server (local) |
+| `make build` | Build production Docker image |
+| `make up` | Start production container |
+| `make down` | Stop production container |
+| `make logs` | Tail production logs |
+| `make deploy` | Build + restart (used by auto-deploy) |
+| `make ionic-install` | Install Ionic dependencies |
+| `make ionic-dev` | Ionic dev server (local) |
+| `make dev-docker-up` | Start Nuxt dev container |
+| `make ionic-docker-up` | Start Ionic dev container |
 
-```bash
-npx nuxthub deploy
-```
+---
 
-Then checkout your server logs, analaytics and more in the
-[NuxtHub Admin](https://admin.hub.nuxt.com).
+## Deployment
 
-You can also deploy using
-[Cloudflare Pages CI](https://hub.nuxt.com/docs/getting-started/deploy#cloudflare-pages-ci).
+The app self-hosts on a ZimaOS NAS with Nginx. Pushing to `main` triggers an automatic deploy via a GitHub webhook → n8n → SSH → `make deploy`.
+
+See [etc/devops.md](etc/devops.md) for the full deployment guide.

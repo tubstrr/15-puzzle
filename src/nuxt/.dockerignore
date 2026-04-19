@@ -1,0 +1,37 @@
+node_modules
+.pnpm-store
+
+# Build artifacts (builder stage produces its own)
+.nuxt
+.output
+dist
+
+# Ionic sub-project (not part of the Nuxt build)
+ionic
+
+# Environment / secrets
+.env
+.env.*
+
+# Editor
+.vscode
+.idea
+
+# Logs
+*.log
+
+# Git
+.git
+.gitignore
+.github
+
+# Docker files (no need to include in the image)
+Dockerfile
+.dockerignore
+
+# Test / coverage
+coverage
+
+# OS
+.DS_Store
+Thumbs.db
