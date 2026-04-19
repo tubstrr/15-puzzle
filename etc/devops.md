@@ -95,19 +95,100 @@ make down       # Stop the container
 
 ## ZimaOS: One-Time Setup
 
-SSH into the ZimaOS server:
+SSH into the ZimaOS server and run these steps once:
+
+### 1. Install prerequisites
 
 ```bash
-# Clone the repo to a stable path
+sudo apt update && sudo apt install -y git make
+# Docker should already be installed on ZimaOS — verify:
+docker --version
+```
+
+### 2. Clone the repo
+
+```bash
+mkdir -p ~/apps
 git clone https://github.com/tubstrr/15-puzzle.git ~/apps/15-puzzle
 cd ~/apps/15-puzzle
+```
 
-# First build and start
+### 3. Make the deploy script executable
+
+```bash
+chmod +x ~/apps/15-puzzle/etc/scripts/deploy.sh
+```
+
+### 4. First build and start
+
+```bash
 make build
 make up
 ```
 
 The container restarts automatically on server reboot (`restart: unless-stopped`).
+
+### 5. Verify it's running
+
+```bash
+curl http://localhost:3000
+docker ps
+```
+
+---
+
+## Deploy Script
+
+The repo ships a deploy script at `etc/scripts/deploy.sh`. n8n calls this single path — no shell logic in the n8n node itself.
+
+What the script does:
+1. `cd ~/apps/15-puzzle`
+2. `git pull origin main`
+3. `make deploy` (rebuild image + restart container)
+4. Appends timestamped output to `~/apps/15-puzzle/deploy.log`
+
+To run manually:
+```bash
+bash ~/apps/15-puzzle/etc/scripts/deploy.sh
+```
+
+To watch the log:
+```bash
+tail -f ~/apps/15-puzzle/deploy.log
+```
+
+---
+
+## n8n: SSH Key Setup
+
+n8n needs an SSH credential to connect to ZimaOS. Set this up once:
+
+### On your local machine (or wherever you manage keys)
+
+```bash
+ssh-keygen -t ed25519 -C "n8n-deploy" -f ~/.ssh/n8n_deploy
+# No passphrase — n8n can't enter one interactively
+```
+
+### On ZimaOS
+
+```bash
+cat >> ~/.ssh/authorized_keys << 'EOF'
+<paste the contents of ~/.ssh/n8n_deploy.pub here>
+EOF
+chmod 600 ~/.ssh/authorized_keys
+```
+
+### In n8n — add the credential
+
+1. Go to **Credentials → New → SSH**
+2. Fill in:
+   - **Host**: ZimaOS IP (e.g. `192.168.1.x`)
+   - **Port**: `22`
+   - **Username**: your ZimaOS username
+   - **Authentication**: Private Key
+   - **Private Key**: paste the contents of `~/.ssh/n8n_deploy` (the private key)
+3. Save as `ZimaOS SSH`
 
 ---
 
@@ -126,12 +207,10 @@ Create a new workflow in n8n with three nodes:
 - **True** branch continues; **False** branch stops
 
 ### Node 3 — SSH
-- **Host**: `127.0.0.1` (or ZimaOS LAN IP)
-- **Port**: 22
-- **Authentication**: SSH Key (recommended) or Password
+- **Credential**: `ZimaOS SSH` (created above)
 - **Command**:
   ```bash
-  cd ~/apps/15-puzzle && git pull origin main && make deploy
+  bash ~/apps/15-puzzle/etc/scripts/deploy.sh
   ```
 
 Activate the workflow and copy the production webhook URL for the next step.
